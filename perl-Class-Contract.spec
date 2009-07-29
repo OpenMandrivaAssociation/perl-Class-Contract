@@ -1,16 +1,18 @@
-%define real_name Class-Contract
+%define upstream_name    Class-Contract
+%define upstream_version 1.14
+
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
 Summary:	Class-Contract module for perl 
-Name:		perl-%{real_name}
-Version:	1.14
-Release:	%mkrel 4
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{real_name}
-Source0:	%{real_name}-%{version}.tar.bz2
-BuildRequires:	perl-devel
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Class/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The Class::Contract module implements strong encapsulation, static
@@ -20,9 +22,8 @@ attribute, method, constructor, and destructor definitions at both
 the object and class level. Pre-conditions, post-conditions, and
 class invariants are also fully supported.
 
-
 %prep
-%setup -q -n %{real_name}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 perl -pi -e "s,/usr/local/bin/perl,%{_bindir}/perl," demo.pl
 
 %build
@@ -44,5 +45,3 @@ rm -rf %{buildroot}
 %{perl_vendorlib}/Class/Contract.pm
 %{perl_vendorlib}/Class/demo.pl
 %{_mandir}/*/*
-
-
