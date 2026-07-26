@@ -1,15 +1,13 @@
 %define upstream_name    Class-Contract
-%define upstream_version 1.14
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	1.14
+Release:	6
 
 Summary:	Class-Contract module for perl 
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Class/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Class/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -24,7 +22,7 @@ the object and class level. Pre-conditions, post-conditions, and
 class invariants are also fully supported.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 perl -pi -e "s,/usr/local/bin/perl,%{_bindir}/perl," demo.pl
 
 %build
@@ -50,9 +48,7 @@ make test
 
 * Wed Jul 29 2009 Jérôme Quelin <jquelin@mandriva.org> 1.140.0-1mdv2011.0
 + Revision: 403006
-- rebuild using %%perl_convert_version
-
-* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 1.14-4mdv2009.0
+- rebuild using %1.14 Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 1.14-4mdv2009.0
 + Revision: 241175
 - rebuild
 - kill re-definition of %%buildroot on Pixel's request
